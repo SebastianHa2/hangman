@@ -32,45 +32,48 @@ const Game = (function gameSetUp(){
     */
     function checkGuessedLetter(e) {
         const word = document.querySelector('input').value
+        
         const letters = [...word]
         const wordLength = [...word].length
         let foundLetter = false
 
-        const key = String.fromCharCode(e.keyCode).toLowerCase()
+        if(e.keyCode >= 65 && e.keyCode <= 90){
+            const key = String.fromCharCode(e.keyCode).toLowerCase()
 
-        if(inputContainer.style.visibility === 'hidden'){
-            if(guessedLetters.has(key)){
-                notificationContainer.classList.remove('shift-down')
-                setTimeout(() => {
-                    notificationContainer.classList.add('shift-down')
-                }, 2000)
-            }
-            else{
-                guessedLetters.add(key)
-                letters.forEach((letter, index) => {
-                    if(key == letter){
-                        foundLetter = true
-                        const lettersToGuess = document.querySelectorAll('.letter')
-                        lettersToGuess.forEach(letterToGuess => {
-                            if(letterToGuess.classList.contains(index)){
-                                letterToGuess.innerHTML = letter
-                                recordCorrectGuesses(wordLength)
-                            }
-                        })
+            if(inputContainer.style.visibility == 'hidden'){
+                if(guessedLetters.has(key)){
+                    notificationContainer.classList.remove('shift-down')
+                    setTimeout(() => {
+                        notificationContainer.classList.add('shift-down')
+                    }, 2000)
+                }
+                else{
+                    guessedLetters.add(key)
+                    letters.forEach((letter, index) => {
+                        if(key == letter){
+                            foundLetter = true
+                            const lettersToGuess = document.querySelectorAll('.letter')
+                            lettersToGuess.forEach(letterToGuess => {
+                                if(letterToGuess.classList.contains(index)){
+                                    letterToGuess.innerHTML = letter
+                                    recordCorrectGuesses(wordLength)
+                                }
+                            })
+                        }
+                    })
+
+                    if(foundLetter === false){
+                        wrongLetters.style.visibility = 'visible'
+                        const li = document.createElement('li')
+                        const liText = document.createTextNode(key.toUpperCase())
+                        li.appendChild(liText)
+                        wrongLettersList.appendChild(li)
+
+                        recordWrongGuesses()
                     }
-                })
-
-                if(foundLetter === false){
-                    wrongLetters.style.visibility = 'visible'
-                    const li = document.createElement('li')
-                    const liText = document.createTextNode(key.toUpperCase())
-                    li.appendChild(liText)
-                    wrongLettersList.appendChild(li)
-
-                    recordWrongGuesses()
                 }
             }
-        }  
+        } 
     }
 
     /* Keep track if the game is won or lost when a letter is
@@ -78,7 +81,7 @@ const Game = (function gameSetUp(){
     */
 
     function recordWrongGuesses() {
-        if(wrongGuesses !== 5){
+        if(wrongGuesses < 5){
             let bodyPart = document.getElementById(`body-part-${wrongGuesses}`)
             bodyPart.classList.remove('hide')
             wrongGuesses++
@@ -100,6 +103,7 @@ const Game = (function gameSetUp(){
     function recordCorrectGuesses(wordLength) {
         correctGuesses++
         if(correctGuesses === wordLength){
+            document.getElementById('final-message').innerHTML = 'You have won'
             popUp.classList.remove('hide')
         }
     }
@@ -137,6 +141,7 @@ const Game = (function gameSetUp(){
         guessedLetters.clear()
         wrongGuesses = 0
         correctGuesses = 0
+        document.querySelector('input').value = ''
         wrongLettersList.innerHTML = ''
         figure.innerHTML = `            <g id="body">
         <g id="body-part-0" class="hide">

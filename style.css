@@ -128,12 +128,17 @@ h1{
     background: transparent;
     color: #fff;
     border: 1px solid #fff;
-    transition: background 0.4s;
+    transition: background-color 0.4s;
+}
+
+.input-container button:active{
+    outline: none;
+    background-color: #ccc;
 }
 
 .input-container button:hover{
     cursor: pointer;
-    background: #fff;
+    background-color: #fff;
     color: #000;
 }
 
@@ -189,4 +194,26 @@ h1{
 
 .shift-down{
     bottom: -200px;
+}
+
+#play-button{
+    width: 50%;
+    margin: 20px 0;
+    padding: 5px 0;
+    text-transform: uppercase;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    transition: background-color 0.4s;
+}
+
+#play-button:active{
+    outline: none;
+    background-color: #ccc;
+}
+
+#play-button:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
 }
