@@ -11,6 +11,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 h1{
@@ -28,6 +29,14 @@ h1{
     stroke: #000;
     stroke-width: 4px;
     stroke-linecap: round;
+}
+
+#door1 {
+    transform-origin: 0% 100%;
+}
+  
+#door2 {
+    transform-origin: 100% 100%;
 }
 
 .hide{
@@ -50,17 +59,16 @@ h1{
 
 .word .letter{
     width: 30px;
-    margin: 20px 10px;
+    margin: 0 20px;
     border-bottom: 2px solid #000;
     text-align: center;
     text-transform: uppercase;
     font-size: 30px;
-    
 }
 
 .wrong-letters-container{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -166,7 +174,7 @@ h1{
 
 .notification-container{
     position: absolute;
-    bottom: 0;
+    bottom: 60px;
     height: 50px;
     width: 400px;
     background-color: #03396c;
@@ -180,5 +188,5 @@ h1{
 }
 
 .shift-down{
-    height: 0;
+    bottom: -200px;
 }

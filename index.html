@@ -12,9 +12,9 @@
     <p class="game-desc">Find the hidden word - enter a letter!</p>
 
     <div class="game-container">
-        <svg height="400" width="400" class="figure-container">
+        <svg height="350" width="350" class="figure-container">
             <g id="body">
-                <g id="head" class="hide">
+                <g id="body-part-0" class="hide">
                     <circle cx="200" cy="80" r="20" stroke="black" stroke-width="5" fill="transparent"/>
                 <g id="xEyes" class="hide">
                     <line x1="190" y1="78" x2="196" y2="84"/>
@@ -23,11 +23,11 @@
                     <line x1="204" y1="84" x2="210" y2="78"/>
                 </g>
                 </g>
-                    <line class="hide" id="torso" x1="200" y1="100" x2="200" y2="150" />
-                    <line class="hide" id="armL" x1="200" y1="120" x2="170" y2="140" />
-                    <line class="hide" id="armR" x1="200" y1="120" x2="230" y2="140" />
-                    <line class="hide" id="legL" x1="200" y1="150" x2="180" y2="190" />
-                    <line class="hide" id="legR" x1="200" y1="150" x2="220" y2="190" />
+                    <line class="hide" id="body-part-1" x1="200" y1="100" x2="200" y2="150" />
+                    <line class="hide" id="body-part-2" x1="200" y1="120" x2="170" y2="140" />
+                    <line class="hide" id="body-part-3" x1="200" y1="120" x2="230" y2="140" />
+                    <line class="hide" id="body-part-4" x1="200" y1="150" x2="180" y2="190" />
+                    <line class="hide" id="body-part-5" x1="200" y1="150" x2="220" y2="190" />
                 </g>
                     <line x1="10" y1="250" x2="150" y2="250" />
                     <line id="door1" x1="150" y1="250" x2="200" y2="250" />
@@ -42,10 +42,6 @@
             <div id="wrong-letters" class="hide">
                 <p>Wrong</p>
                 <ul id="wrong-letters-list">
-                    <li>a</li>
-                    <li>b</li>
-                    <li>c</li>
-                    <li>d</li>
                 </ul>
             </div>
         </div>
@@ -75,6 +71,7 @@
         <p>You have already entered this letter</p>
     </div>
 
+    <script src="//cdn.jsdelivr.net/velocity/1.5/velocity.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
